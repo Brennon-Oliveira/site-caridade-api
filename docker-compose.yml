@@ -1,0 +1,10 @@
+version: "3.7"
+services: 
+    api:
+        build: "."
+        container_name: node-container
+        restart: always
+        volumes: 
+            - ./:/home/node/api
+        ports:
+            - "9001:9001"
