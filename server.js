@@ -1,10 +1,26 @@
 const express = require('express');
 const app = express();
+const { PORT, IP } = require('./consts');
+const User = require('./database/Models/User');
 
-app.get('/', (req, res)=>{
-    res.json({"ola":process.env.PORT||'iosdfu'});
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+app.get('/', async (req, res)=>{
+    let user = await User({
+        name: 'Brennon Gabriel de Oliveira',
+        email: "brennonoliveira20014@gmail.com",
+        password: 'admin',
+    })
+
+    await user.save().then(result => {
+        console.log('note saved!')
+        mongoose.connection.close()
+      })
+
+    res.json({"ola":'asfsdf'});
 })
 
-app.listen(9001,'0.0.0.0',()=>{
-    console.log(`Listen on port 9001`);
+app.listen(PORT,IP,()=>{
+    console.log(`Listen on port ${IP}:${PORT}`);
 })
