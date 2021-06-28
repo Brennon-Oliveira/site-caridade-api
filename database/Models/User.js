@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('../index');
 const randomToken = require('random-token');
 
 const UserSchema = new mongoose.Schema({
