@@ -8,4 +8,3 @@ RUN npm install --save-dev nodemon
 COPY . .
 
 EXPOSE 9001
-CMD npm run dev
